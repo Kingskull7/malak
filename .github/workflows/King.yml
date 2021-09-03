@@ -1,4 +1,4 @@
-name: eX-code_UMBL
+name: eX-code
 
  
 
@@ -10,7 +10,7 @@ jobs:
 
   build:
 
-    name: eX-code_UMBL
+    name: eX-code
 
     runs-on: windows-latest
 
